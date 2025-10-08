@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CosmoSphere - Explore the Universe</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, #0b0c10, #1a1f71);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header.navbar {
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      position: fixed;
+      top:0;
+      width:100%;
+      z-index:1000;
+    }
+
+    .hero-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 60px;
+    }
+
+    .hero-section h1 {
+      font-size: 3rem;
+      color: #3A50F0;
+      margin-bottom: 20px;
+      text-shadow: 0 0 8px #3A50F0, 0 0 12px #8A2BE2;
+    }
+
+    .hero-section p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .btn-glow {
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #3A50F0, #8A2BE2);
+      color: #fff;
+      box-shadow: 0 0 8px #3A50F0, 0 0 12px #8A2BE2;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-glow:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px #fff, 0 0 18px #8A2BE2;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.85);
+      color: #ccc;
+      backdrop-filter: blur(6px);
+    }
+
+    a { text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/landing">CosmoSphere</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <% if(currentUser){ %>
+            <li class="nav-item"><span class="nav-link">Hello <%= currentUser.username %></span></li>
+            <li class="nav-item"><a class="nav-link btn btn-outline-light ms-2" href="/logout">Logout</a></li>
+          <% } else { %>
+            <li class="nav-item"><a class="nav-link btn btn-outline-light ms-2" href="/login">Login</a></li>
+            <li class="nav-item"><a class="nav-link btn btn-outline-light ms-2" href="/register">Sign Up</a></li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1>Welcome to CosmoSphere</h1>
+    <p>Explore, ask, and answer questions about the universe. Dive into the mysteries of space and share your cosmic knowledge with fellow enthusiasts!</p>
+    <% if(currentUser){ %>
+      <a href="/view-questions" class="btn-glow">View Questions</a>
+    <% } else { %>
+      <a href="/register" class="btn-glow">Join Now</a>
+    <% } %>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 CosmoSphere. All Rights Reserved.
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
